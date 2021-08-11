@@ -13,6 +13,7 @@ const indexRouter = require("./routes/index");
 const messagesRouter = require("./routes/messages");
 const userRouter = require("./routes/user");
 
+// change process.env.DB_DATAB for your mongodb private route
 require("dotenv").config()
 mongoose.connect(process.env.DB_DATAB, {
     useUnifiedTopology:true,

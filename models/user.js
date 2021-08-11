@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const UserSChema = new Schema(
     {
-        username,
-        password,
-        firstName,
-        secondName,
-        membershipStatus,
+        username: { type: String, required: true },
+        password: { type: String, required: true },
+        firstName: { type: String, required: true, maxLength:100 },
+        secondName: { type: String, maxLength:100 },
+        membershipStatus: { type:String, required: true, enum:["Regular", "Administrator"], default:"Regular" },
     }
 );
 

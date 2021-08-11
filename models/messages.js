@@ -5,9 +5,9 @@ const { Schema } = mongoose;
 const MessageSchema = new Schema(
     {
         title,
-        timestamp,
         text,
         author,
+        timestamp,
     }
 )
 

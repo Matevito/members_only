@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
 router.get("/sign-up", signUp_controller.create_get);
 
-router.post("sign-up", signUp_controller.create_post);
+router.post("/sign-up", signUp_controller.create_post);
 
 router.get("/log-in", logIn_controller.login_get);
 

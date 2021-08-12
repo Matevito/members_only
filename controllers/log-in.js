@@ -9,3 +9,11 @@ exports.login_get = (req, res, next) => {
 exports.login_post = (req, res, next) => {
     // code here
 };
+
+exports.logout_get = (req, res, next) => {
+
+};
+
+exports.logout_post = (req, res, next) => {
+
+};

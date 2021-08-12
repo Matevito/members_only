@@ -6,7 +6,7 @@ const message_controller = require("../controllers/messagesController");
 
 // /messages/{route_path}
 
-router.get("/");
+router.get("/", message_controller.messages_get);
 
 router.get("/create");
 

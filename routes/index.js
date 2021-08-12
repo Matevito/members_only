@@ -6,10 +6,7 @@ const signUp_controller = require("../controllers/sign-up");
 const logIn_controller = require("../controllers/log-in");
 
 router.get("/", (req, res) => {
-    res.send("wellcome to the index page");
-    /* 
     res.redirect("/messages");
-    */
 });
 
 router.get("/sign-up", signUp_controller.create_get);

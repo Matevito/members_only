@@ -1,0 +1,20 @@
+<%- include("./layout"), {title:title} %>
+<body>
+	<%- include("./navbar") %> 
+    <div class="container-fluid">
+        <div class="row">
+            <form action="/log-in" method="POST">
+                <h1>Please log!</h1>
+                <label class="form-label" for="username">Email:</label>
+                <input class="form-control" type="text" name="username" id=""username>
+
+                <label class="form-label" for="password">Password:</label>
+                <input class="form-control" type="password" name="password" id="password">
+
+                <hr>
+                <button class="btn btn-primary">Log in</button> 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

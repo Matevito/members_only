@@ -41,16 +41,6 @@ exports.create_post = [
             return;
         }
 
-        //todo: crypt password and password type in input type on view
-        const password = req.body.password_1;
-        // Create user object with trimmed data
-        const user = new User({
-            username: req.body.username,
-            password, password,
-            firstName: req.body.first_name,
-            secondName: req.body.second_name,
-        });
-
         // Check if a user with the same username already exist!
         User.findOne({ "username": req.body.username })
             .exec( function(err, found_user) {
@@ -68,9 +58,21 @@ exports.create_post = [
                 }
 
                 // a user does not exist with the entered email, continue
-                user.save( function (err) {
-                    if (err) { return next(err) }
-                    res.redirect("/")
+                //hashing password
+                const password = req.body.password_1;
+                bcrypt.hash(password, 10, (err, hashedPassword) => {
+                    if (err) {next (err) }
+                    const user = new User({
+                        username: req.body.username,
+                        password: hashedPassword,
+                        firstName: req.body.first_name,
+                        secondName: req.body.second_name,
+                    });
+                    user.save(err => {
+                        if (err) { return next (err) }
+                        //saving succesfull
+                        res.redirect("/");
+                    })
                 })
             }) 
     }

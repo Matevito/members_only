@@ -14,13 +14,21 @@
                 <label class="form-label" for="username">Email:</label>
                 <input class="form-control" name="username" type="text" required="true">
                 <label class="form-label" for="password_1">Password:</label>
-                <input class="form-control" name="password_1" type="text" required="true">
+                <input class="form-control" name="password_1" type="password" required="true">
                 <label class="form-label" for="password_2">Re-enter Password:</label>
-                <input class="form-control" name="password_2" type="text" required="true">
+                <input class="form-control" name="password_2" type="password" required="true">
                 <% // name- secondname %>
                 
                 <hr>
-                <button type="submit" class="btn btn-primary">Submit</button>            </form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <% if(errors) { %>
+                <ul>
+                    <% errors.forEach((error) => { %>
+                        <li class="text-danger"> <%= error.msg %>  </li>
+                    <% }) %> 
+                </ul>
+            <% } %> 
         </div>
     </div>
 </body>

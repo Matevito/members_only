@@ -1,6 +1,6 @@
 const async = require("async");
 const { body, validationResult } = require("express-validator");
-const passport = require("passport");
+const passport = require("../passport");
 const User = require("../models/user");
 
 exports.login_get = (req, res, next) => {
@@ -9,13 +9,12 @@ exports.login_get = (req, res, next) => {
     })
 };
 
-exports.login_post = (req, res, next) => {
-    // code here
+exports.login_post =
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/"
-    })
-};
+        failureRedirect: "/log-in"
+    }
+);
 
 exports.logout_get = (req, res, next) => {
     req.logout();

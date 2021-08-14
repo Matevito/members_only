@@ -1,69 +1,49 @@
 // app.js
-
 // dependencies
 const createError = require('http-errors');
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const mongoose = require("mongoose");
+const passport = require("./passport");
+require("dotenv").config()
 
 // routes path
 const indexRouter = require("./routes/index");
 const messagesRouter = require("./routes/messages");
 const userRouter = require("./routes/user");
 
-// setting up localstrategy
-const User = require("./models/user");
-passport.use(
-    new LocalStrategy((username, password, done) => {
-        User.findOne({ username: username }, (err, user) => {
-        if (err) { 
-            return done(err);
-        }
-        if (!user) {
-            return done(null, false, { message: "Incorrect username" });
-        }
-        if (user.password !== password) {
-            return done(null, false, { message: "Incorrect password" });
-        }
-        return done(null, user);
-        });
-    })
-);
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){
-        done(err, user);
-    });
-});
-
+const app = express();
+const mongoose = require("mongoose");
+const mongoDB = process.env.DB_DATAB
 // change process.env.DB_DATAB for your mongodb private route
-require("dotenv").config()
-mongoose.connect(process.env.DB_DATAB, {
+mongoose.connect(mongoDB, {
     useUnifiedTopology:true,
     useNewUrlParser:true,
 });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 
-const app = express();
+const User = require("./models/user");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(express.json())
 app.use(session({
     secret:"cats",
-    resave: false,
+    resave:false,
     saveUninitialized:true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+})
 
+app.use(express.json());
+app.use(express.urlencoded( { extended: false}));
+
+
+// Setting up routes
 app.use("/", indexRouter);
 app.use("/messages", messagesRouter);
 app.use("/user", userRouter);

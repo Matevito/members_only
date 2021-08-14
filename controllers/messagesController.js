@@ -4,6 +4,7 @@ const User = require("../models/user");
 
 exports.messages_get = (req, res, next) => {
     res.render("index", {
-        title: "Members Only"
+        title: "Members Only",
+        user: req.user,
     })
 };

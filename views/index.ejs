@@ -2,7 +2,12 @@
 <body>
     <%- include("./navbar") %> 
     <div class="container-fluid">
-        
+        <% //testing porpusses %>
+        <% if (user) { %>
+            <h1>Wellcome back</h1>
+            <a href="/log-out">Log out</a>
+        <% } %> 
+        <% //-- %> 
         <div class="row">
             <% //your code goes here... %>
             <h1>Wellcome to testing page!</h1>

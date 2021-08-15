@@ -4,9 +4,15 @@ const User = require("../models/user");
 const Message = require("../models/messages");
 
 exports.messages_get = (req, res, next) => {
-    res.render("index", {
-        title: "Members Only",
-        user: req.user,
+    Message.find().populate("author", ["firstName", "secondName"]).exec((err, messages_list) => {
+        if (err) {return next(err)};
+
+        //Messages found, render the view
+        res.render("index", {
+            title:"Members Only",
+            user:req.user,
+            messages: messages_list
+        })
     })
 };
 

@@ -10,7 +10,11 @@ router.get("/", message_controller.messages_get);
 
 router.get("/create", message_controller.create_get);
 
-router.post("/create", message_controller.create_post)
+router.post("/create", message_controller.create_post);
+
+router.get("/:id/delete", message_controller.delete_get);
+
+router.post("/:id/delete", message_controller.delete_post);
 
 router.get("/:id/update", message_controller.update_get);
 

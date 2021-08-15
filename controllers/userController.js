@@ -12,7 +12,7 @@ exports.info_get = (req, res, next) => {
 }
 
 exports.messages_get = (req, res, next) => {
-    res.send("todo:")
+    res.send("todo: user messages")
 }
 
 exports.update_get = (req, res, next) => {

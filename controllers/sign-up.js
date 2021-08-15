@@ -12,7 +12,7 @@ exports.create_get = (req, res, next) => {
 };
 
 exports.create_post = [
-    //validate and sanitize sign up foorm data
+    //validate and sanitize sign up form data
     body("username", "an Email is required.").trim().isLength({ min:1 }).escape(),
     body("first_name", "first name is required").trim().isLength({ min:1 }).escape(),
     body("second_name", "second name is required").trim().isLength({ min: 1}).escape(),
@@ -32,7 +32,6 @@ exports.create_post = [
 
         // Check errors is form data
         const errors = validationResult(req);
-        console.log(errors)
         if (!errors.isEmpty()) {
             //THere are errors. Render the form again!
             res.render("sign-up", {

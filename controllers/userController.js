@@ -17,7 +17,8 @@ exports.messages_get = (req, res, next) => {
 exports.update_get = (req, res, next) => {
     res.render("info_update", {
         title:"user update",
-        user: req.user
+        user: req.user,
+        errors:undefined
     })
 }
 

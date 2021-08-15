@@ -4,7 +4,7 @@ const User = require("../models/user");
 const Message = require("../models/messages");
 
 exports.messages_get = (req, res, next) => {
-    Message.find().populate("author", ["firstName", "secondName"]).exec((err, messages_list) => {
+    Message.find().populate("author", ["firstName", "secondName", "formatted_name"]).exec((err, messages_list) => {
         if (err) {return next(err)};
 
         //Messages found, render the view

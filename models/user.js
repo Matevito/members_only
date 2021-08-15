@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const UserSChema = new Schema(
+const UserSchema = new Schema(
     {
         username: { type: String, required: true },
         password: { type: String, required: true },
@@ -12,4 +12,10 @@ const UserSChema = new Schema(
     }
 );
 
-module.exports = mongoose.model('User', UserSChema);
+UserSchema
+.virtual("formatted_name")
+.get(function(){
+    return this.secondName + ", " + this.firstName;
+})
+
+module.exports = mongoose.model('User', UserSchema);

@@ -14,15 +14,19 @@
                 <% messages.forEach((message) => { %>
                     <div class="card text-white bg-dark mb-3">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Title: </b><%= message.title %> </h5>
-                            <p class="card-text"><b>Message: </b><%= message.text %> </p>
-                            <hr>
-                            <p class="card-text"><b>Author: </b><%= message.author.secondName+", "+message.author.firstName %> </p>
-                            <p class="card-text"><%= message.formatted_time %> </p>
-                            <% if(user.membershipStatus === "Admin") { %>
-                                <a class="card-link" href= <%= "/messages/"+message._id+"/delete" %> >
-                                    Delete message
-                                </a>
+                            <% if (user.membershipStatus === "Regular") { %>
+                                <h5 class="card-title">Message available only for members</h5>
+                            <% } else { %>
+                                <h5 class="card-title"><b>Title: </b><%= message.title %> </h5>
+                                <p class="card-text"><b>Message: </b><%= message.text %> </p>
+                                <hr>
+                                <p class="card-text"><b>Author: </b><%= message.author.secondName+", "+message.author.firstName %> </p>
+                                <p class="card-text"><%= message.formatted_time %> </p>
+                                <% if(user.membershipStatus === "Admin") { %>
+                                    <a class="card-link" href= <%= "/messages/"+message._id+"/delete" %> >
+                                        Delete message
+                                    </a>
+                                <% } %> 
                             <% } %> 
                         </div>
                     </div>

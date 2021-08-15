@@ -10,12 +10,11 @@
         <% if (user) { %>
             <h1>Wellcome back</h1>
             <a href="/messages/create">Create new message</a>
+        <% } else { %>
+            <h1>Wellcome to members only page!</h1>
+            <p>The page contains <b><%= messages.length %></b> different messages. </p>
+            <p>Become a user to be able to see them.</p>
         <% } %> 
-        <% //-- %> 
-        <div class="row">
-            <% //your code goes here... %>
-            <h1>Wellcome to testing page!</h1>
-        </div>
     </div>
 </body>
 </html>

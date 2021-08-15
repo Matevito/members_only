@@ -61,7 +61,7 @@ exports.create_post = [
 ]
 
 exports.delete_get = (req, res, next) => {
-    res.send("todo delete get")
+    res.send("todo delete message get")
 }
 
 exports.delete_post = (req, res, next) => {

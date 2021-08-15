@@ -19,7 +19,9 @@
                             <hr>
                             <p class="card-text"><b>Author: </b><%= message.author.secondName+", "+message.author.firstName %> </p>
                             <% if(user.membershipStatus === "Admin") { %>
-                                <a class="card-link" href="">Delete message</a>
+                                <a class="card-link" href= <%= "/messages/"+message._id+"/delete" %> >
+                                    Delete message
+                                </a>
                             <% } %> 
                         </div>
                     </div>

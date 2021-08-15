@@ -67,11 +67,3 @@ exports.delete_get = (req, res, next) => {
 exports.delete_post = (req, res, next) => {
     res.send("todo delete post")
 }
-
-exports.update_get = (req, res, next) => {
-    res.send("todo update get")
-}
-
-exports.update_post = (req, res, next) => {
-    res.send("todo update post")
-}

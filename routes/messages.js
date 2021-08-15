@@ -16,8 +16,4 @@ router.get("/:id/delete", message_controller.delete_get);
 
 router.post("/:id/delete", message_controller.delete_post);
 
-router.get("/:id/update", message_controller.update_get);
-
-router.post("/:id/update", message_controller.update_post);
-
 module.exports = router;

@@ -52,7 +52,18 @@ exports.update_post = [
                 })
             } else {
                  //passwords match - update user info.
-                res.redirect("/user/info")
+                const new_user  = new User({
+                    _id: req.user._id,
+                    username: req.user.username,
+                    password: req.user.password,
+                    firstName: req.body.first_name,
+                    secondName: req.body.second_name,
+                    membershipStatus: req.body.membership,
+                })
+                User.findByIdAndUpdate(req.user._id, new_user, {}, function(err, theUser){
+                    if (err) { return next(err) }
+                    res.redirect("/user/info")
+                })
             }
         })
 

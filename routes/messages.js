@@ -8,12 +8,12 @@ const message_controller = require("../controllers/messagesController");
 
 router.get("/", message_controller.messages_get);
 
-router.get("/create");
+router.get("/create", message_controller.create_get);
 
-router.post("/create")
+router.post("/create", message_controller.create_post)
 
-router.get("/:id/update");
+router.get("/:id/update", message_controller.update_get);
 
-router.post("/:id/update");
+router.post("/:id/update", message_controller.update_post);
 
 module.exports = router;

@@ -8,3 +8,23 @@ exports.messages_get = (req, res, next) => {
         user: req.user,
     })
 };
+
+exports.create_get = (req, res, next) => {
+    res.render("message_form", {
+        title:"new message",
+        user: req.user,
+        errors: undefined
+    })
+}
+
+exports.create_post = (req, res, next) => {
+    res.send("todo")
+}
+
+exports.update_get = (req, res, next) => {
+    res.send("todo")
+}
+
+exports.update_post = (req, res, next) => {
+    res.send("todo")
+}

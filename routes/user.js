@@ -4,14 +4,12 @@ const router = express.Router();
 
 const userController = require("../controllers/userController");
 
-// /user/{route_path}
+router.get("/info", userController.info_get);
 
-router.get("/:id/info");
+router.get("/messages", userController.messages_get);
 
-router.get("/:id/messages");
+router.get("/update", userController.update_get);
 
-router.get("/:id/update");
-
-router.post("/:id/update")
+router.post("/update", userController.update_post);
 
 module.exports = router;

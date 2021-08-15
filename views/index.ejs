@@ -1,11 +1,15 @@
 <%- include("./layout"), {title:title} %>
 <body>
-    <%- include("./navbar") %> 
+    <% if(user) { %>
+        <%- include("./navbar",{user:user}) %> 
+    <% } else { %>
+        <%- include("./navbar", {user:undefined}) %> 
+    <% } %> 
     <div class="container-fluid">
         <% //testing porpusses %>
         <% if (user) { %>
             <h1>Wellcome back</h1>
-            <a href="/log-out">Log out</a>
+            <a href="/messages/create">Create new message</a>
         <% } %> 
         <% //-- %> 
         <div class="row">

@@ -1,0 +1,21 @@
+<%- include("./layout"), {title:title} %>
+<body>
+	<%- include("./navbar") %> 
+    <div class="container-fluid">
+        <div class="row">
+            <h1>User info</h1>
+        </div>
+        <h4>First name: <i><%= user.firstName %> </i></h4>
+        <h4>Second name: <i><%= user.secondName %> </i></h4>
+        <hr>
+        <h4>E-mail: <i><%= user.username %> </i></h4>
+        <h4>Membership: <i><%= user.membershipStatus %> </i></h4>
+        <div class="row">
+            <span><a href="/user/messages">User Messages</a></span>
+        </div>
+        <div class="row">
+            <span><a href="/user/update">Update user info</a></span>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,7 +5,8 @@ const User = require("../models/user");
 
 exports.login_get = (req, res, next) => {
     res.render("log-in", {
-        title:"log in"
+        title:"log in",
+        user:undefined
     })
 };
 
@@ -19,8 +20,4 @@ exports.login_post =
 exports.logout_get = (req, res, next) => {
     req.logout();
     res.redirect("/")
-};
-
-exports.logout_post = (req, res, next) => {
-    // erase this
 };

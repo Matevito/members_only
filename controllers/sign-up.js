@@ -6,7 +6,8 @@ const bcrypt = require("bcryptjs");
 exports.create_get = (req, res, next) => {
     res.render("sign-up", {
         title:"sign up",
-        errors: undefined
+        errors: undefined,
+        user:undefined
     })
 };
 

@@ -37,6 +37,7 @@ exports.create_post = [
             //THere are errors. Render the form again!
             res.render("sign-up", {
                 title: "sign up",
+                user: undefined,
                 errors: errors.array()
             })
             return;

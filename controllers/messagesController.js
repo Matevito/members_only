@@ -61,7 +61,15 @@ exports.create_post = [
 ]
 
 exports.delete_get = (req, res, next) => {
-    res.send("todo delete message get")
+    Message.findById(req.params.id).populate("author", ["firstName", "secondName"]).exec((err,message) => {
+        if (err) { return next(err) }
+        res.render("message_delete", {
+            title: "message delete",
+            user: req.user,
+            message: message,
+        })
+    })
+    
 }
 
 exports.delete_post = (req, res, next) => {

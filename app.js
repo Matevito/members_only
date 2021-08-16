@@ -5,6 +5,8 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const passport = require("./passport");
+const compression = require("compression");
+const helmet = require("helmet");
 require("dotenv").config()
 
 // routes path
@@ -12,7 +14,11 @@ const indexRouter = require("./routes/index");
 const messagesRouter = require("./routes/messages");
 const userRouter = require("./routes/user");
 
+// run express app
 const app = express();
+app.use(helmet());
+
+// connect app to database
 const mongoose = require("mongoose");
 const mongoDB = process.env.DB_DATAB
 // change process.env.DB_DATAB for your mongodb private route
@@ -32,6 +38,7 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
@@ -41,7 +48,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded( { extended: false}));
-
+app.use(compression());
 
 // Setting up routes
 app.use("/", indexRouter);

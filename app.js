@@ -20,7 +20,7 @@ app.use(helmet());
 
 // connect app to database
 const mongoose = require("mongoose");
-const mongoDB = process.env.DB_DATAB
+const mongoDB = process.env.MONGODB_URI || process.env.DB_DATAB
 // change process.env.DB_DATAB for your mongodb private route
 mongoose.connect(mongoDB, {
     useUnifiedTopology:true,

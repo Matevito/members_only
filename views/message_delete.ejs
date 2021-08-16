@@ -2,9 +2,20 @@
 <body>
 	<%- include("./navbar") %> 
     <div class="container-fluid">
-        <div class="row">
-            <h1>erase form</h1>
-        </div>
+        <h1>Are yousure you wonna delete the following message of <i><%= message.author.firstName %>?</i></h1>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Title: </b><%= message.title %> </h5>
+                    <hr>
+                    <p class="card-text"><b>Message: </b><%= message.text %> </p>
+                </div>
+            </div>
+        <form action="" method="POST">
+            <div class="form-group">
+                <input type="hidden" required="true" name="message_id" id="message_id" value= <%= message._id %> >
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>

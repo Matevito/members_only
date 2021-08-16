@@ -61,7 +61,7 @@ exports.create_post = [
 ]
 
 exports.delete_get = (req, res, next) => {
-    Message.findById(req.params.id).populate("author", ["firstName", "secondName"]).exec((err,message) => {
+    Message.findById(req.params.id).populate("author", "firstName").exec((err,message) => {
         if (err) { return next(err) }
         res.render("message_delete", {
             title: "message delete",

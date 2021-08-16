@@ -73,5 +73,10 @@ exports.delete_get = (req, res, next) => {
 }
 
 exports.delete_post = (req, res, next) => {
-    res.send("todo delete post")
+    const message_id = req.body.message_id;
+    Message.findByIdAndRemove(message_id, (err) => {
+        if (err) { return next(err) }
+        // item deleted, redirect to messages board
+        res.redirect("/");
+    })
 }
